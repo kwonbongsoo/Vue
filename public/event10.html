@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <div id='app'>
+      <a href="https://blog.majestybbong.org" @click.once.prevent="showAlert">link</a>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        methods: {
+          showAlert: function() {
+            alert('깝ㄴㄴ')
+          }
+          // 태그를 클릭하면 메세지가 적힌 alert가 등장함. 하지만 두번쨰 클릭 하게되면
+          // 내 블로그가 들어가지게 됨, prevent를 걸어줬지만 내블로그로 이동됨.
+          // 왜냐면 once에 의해 한번 사용하고 나면 바인딩이 해제 되기 때문에. prevent 도 같이 해제된다.
+        }
+      })
+    </script>
+  </body>
+</html>

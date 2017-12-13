@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>model</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="radio" id='male' value='남자' v-model="gender">
+      <label for="male">남자</label>
+      <br>
+      <input type="radio" id='female' value='여자' v-model='gender'>
+      <label for="female">여자</label>
+      <br>
+      <span>선택: {{ gender }}</span>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script type="text/javascript">
+      new Vue({
+        el:'#app',
+        data: {
+          gender: ''
+        }
+      })
+    </script>
+  </body>
+</html>

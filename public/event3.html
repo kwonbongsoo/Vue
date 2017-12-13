@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <div id='app'>
+      <button @click="todayAlert">지금 시간은?</button>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          messages : []
+        },
+        methods: {
+          todayAlert: function() {
+            alert(new Date());
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

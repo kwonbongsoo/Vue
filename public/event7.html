@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+    <style media="screen">
+      div { padding: 20px; }
+      #outer { background: blue; }
+      #middle { background: green; }
+      #inner { background: white; }
+    </style>
+  </head>
+  <body>
+    <div id='app'>
+      <div id="outer" @click="func1">
+        1
+        <div id="middle" @click.stop="func2">
+          2
+          <div id="inner" @click="func3">
+            3
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        methods: {
+          func1 : function() {
+            console.log('1 - outer')
+          },
+          func2 : function() {
+            console.log('2 - middle')
+          },
+          func3 : function() {
+            console.log('3 - inner')
+          }
+          // stop 버블링을 꺼주는 기능.
+          // 3을 눌러도 버블링으로 func2를 만나게 되면 2를 찍고나서 더이상
+          // 이벤트 버블링 부모노드로 전달되지 않는다.
+        }
+      })
+    </script>
+  </body>
+</html>

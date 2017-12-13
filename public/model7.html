@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>model</title>
+  </head>
+  <body>
+    <div id="app">
+      {{message}}
+      <input type="text" v-model="message"><!-- 한글 입력 ㄱ -->
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script type="text/javascript">
+      new Vue({
+        el:'#app',
+        data: {
+          message: '안녕하세요'
+        }
+      })
+    </script>
+  </body>
+</html>

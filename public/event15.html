@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <div id='app'>
+      <input type="text" @keyup.65="triggerA">
+      <input type="text" @keyup.a="triggerA">
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        methods: {
+          triggerA: function() {
+            alert('A 입력');
+          }
+          //a 나 65나 컴퓨터에서는 같은 소리다.
+        }
+      })
+    </script>
+  </body>
+</html>

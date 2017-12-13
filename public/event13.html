@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <div id='app'>
+      <input type="text" @keydown.up.down.left.right="arrowKey">
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        methods: {
+          arrowKey: function() {
+              event.target.value = event.key;
+          }
+          //화살표키 이벤트를 바인딩하여 화살표누를때마다 event 키를 input창에
+          // 입력하도록 코딩함.
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <div id='app'>
+      <p>Counter: {{ counter }}</p>
+      <button @click="counter += 1">클릭</button>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          counter: 0
+          //v-on:click을 @click으로 줄였다.
+          // on은 이벤트를 등록할때 .
+          //v-bind:src도 @src로 줄일수 있다.
+          // bind는 엘리먼트 속성에 문자열을 삽입할때 .
+        }
+      })
+    </script>
+  </body>
+</html>

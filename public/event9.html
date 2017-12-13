@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <div id='app'>
+      <a href="https://blog.majestybbong.org">link</a>
+      <a href="https://blog.majestybbong.org" @click.prevent>link</a>
+      <a href="https://blog.majestybbong.org" @click="prevent">link</a>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        methods: {
+          prevent: function() {
+            event.preventDefault();
+          }
+          // 브라우저 기본 액션 금지...
+        }
+      })
+    </script>
+  </body>
+</html>

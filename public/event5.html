@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+    <style media="screen">
+      div { padding: 20px; }
+      #outer { background: blue; }
+      #middle { background: green; }
+      #inner { background: white; }
+    </style>
+  </head>
+  <body>
+    <div id='app'>
+      <div id="outer" @click="func1">
+        1
+        <div id="middle" @click="func2">
+          2
+          <div id="inner" @click="func3">
+            3
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        methods: {
+          func1 : function() {
+            console.log('1 - outer')
+          },
+          func2 : function() {
+            console.log('2 - middle')
+          },
+          func3 : function() {
+            console.log('3 - inner')
+          }
+          // 버블링 최하단 자식 노드 부터 이벤트가 전파됨
+          // 캡처링 최상단 부모 노드 부터 이벤트가 전파됨.
+        }
+      })
+    </script>
+  </body>
+</html>

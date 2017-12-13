@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>값 바인딩하기</title>
+  </head>
+  <body>
+    <div id="app">
+       <input type="text" v-model.lazy="lazyModel">
+       <p>{{ lazyModel }}</p>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script type="text/javascript">
+      new Vue({
+        el:'#app',
+        data: {
+          lazyModel: 'hello'
+        }//일반적으로 v-model은 바로바로 업데이트가 되는데
+        // v-model.laze는 엔터를 쳐야 업데이트가 된다.
+      })
+    </script>
+  </body>
+</html>

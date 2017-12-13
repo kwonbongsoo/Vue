@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>필터</title>
+  </head>
+  <body>
+    <div id="app">
+       <p>필터 미적용 {{ message }}</p>
+       <p>필터 적용 {{ message | ellipsis(10, '...')}}</p>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script type="text/javascript">
+      new Vue({
+        el:'#app',
+        data: {
+          message: '안녕하세요 오늘도 vue js 를 열심히 공부 합시다'
+        },
+        filters: {
+          ellipsis: function(value, length, string) {
+            console.log(value.slice(0, 10))
+            return value.slice(0, length) + string
+          }//
+        }
+      })
+    </script>
+  </body>
+</html>

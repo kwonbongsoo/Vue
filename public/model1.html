@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>model</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="name">
+      {{ name }}
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script type="text/javascript">
+      new Vue({
+        el:'#app',
+        data: {
+          name: 'Kwon Bongsoo'
+        }
+        // 사용자의 입력값을 쓰면서 바로 적용시킬수 있다.
+        // 엄밀히 말하면 데이터의 양방향 바인딩이 아니고, 사용자의 입력에 매핑된 변수를
+        // 업데이트해주는 이벤트가 포함 되어 있는 syntax sugar입니다.
+      })
+    </script>
+  </body>
+</html>
