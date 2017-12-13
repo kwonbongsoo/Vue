@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <div id='app'>
+      <a v-bind:href="blogLink">블로그링크</a>
+      <a :href="projectLink">봄비링크</a>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          blogLink: 'https://blog.majestybbong.org',
+          projectLink: 'https://rds.bombee.be'
+        }
+      })
+    </script>
+  </body>
+</html>

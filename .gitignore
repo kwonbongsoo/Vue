@@ -1,0 +1,12 @@
+**/node_modules
+**/.vscode
+**/bin
+**/build
+**/.classpath
+**/temp/
+**/.class
+**/.log
+**/.DS_Store
+**/.settings
+**/.project
+!build.gradle

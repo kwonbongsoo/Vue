@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="./node_modules\jquery\dist\jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input v-model="search"><br>
+      검색결과:
+      <ul>
+        <li>
+          ...
+        </li>
+      </ul>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script>
+      new Vue({
+        el:'#app',
+        data: {
+          search: ''
+        },
+        watch: {
+          search: function (value) {
+            this.$http.get('/search?value' + value)
+            .then(function (response) {
+              /* ... */
+            })
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

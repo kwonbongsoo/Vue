@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+  </head>
+  <body>
+    <div id='app'>
+      <span v-show='isShow'>보이냐</span>
+      <span v-show='isShow1'>보이냐1</span>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          isShow: true,
+          isShow1: false
+        }
+      })
+    </script>
+  </body>
+</html>

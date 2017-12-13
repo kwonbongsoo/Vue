@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="./node_modules\jquery\dist\jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <button @click="showAlert">클릭</button>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script>
+      new Vue({
+        el:'.app',
+        methods: {
+          showAlert: function () {
+            alert('디져도 떳다')
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
