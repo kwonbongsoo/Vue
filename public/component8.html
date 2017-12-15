@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>props</title>
+  </head>
+  <body>
+    <div id="app">
+      <simple-component simple-message="hi, Vue!"></simple-component>
+      <!-- kebab-case(하이폰으로 구분하는 방법)를 사용합니다. -->
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script>
+      var simpleComponent = {
+        // 스크립트에서는 camelCase로 자동 변환되어 사용합니다.
+        props: ['simpleMessage'],
+        template: '<div>{{ simpleMessage }}</div>'
+      }
+      new Vue({
+        el: '#app',
+        components: {
+          'simple-component' : simpleComponent
+        }
+      })
+    </script>
+  </body>
+</html>

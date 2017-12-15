@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>props</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- props로 정의된 message라는 이름의 속성으로 데이터를 전달 합니다 -->
+      <simple-component message="Hello, Vue!" msg="hi"></simple-component>
+      <simple-component message="Hello, Vue1!" msg ="hihi"></simple-component>
+      <simple-component message="Hello, Vue2!" msg ="hihi"></simple-component>
+      <simple-component message="Hello, Vue3!" msg ="hihi"></simple-component>
+      <!-- Vue에서는 부모컨포넌트가 자식컴포넌트에게 데이터 전달을 하는것이 가능합니다.
+      반면 자식 컴포넌트는 부모 컴포넌트에게 데이터를 전달 할수 없습니다. 그러나
+      자식 컴포넌트는 부모 컴포넌트에게 이벤트를 전달해 부모 컴포넌트에게 이벤트를 전달해
+      부모 컴포넌트에게 메시지를 전달할 수 있습니다.
+      Vue의 컴포넌트가 이러한 디자인으로 개발된 것은 이유가 있습니다.
+      가능한 한 컴포넌트는  컴포넌트 그 자체만으로 완전해야 합니다. 컴포넌트 의존성이 발생
+      한다면 컴포넌트는 그 컴포넌트는 독립적으로 존재할 수 없습니다. 하지만 컴포넌트 데이터
+      교환도 필수 이기 때문에 vue 에서는 부모 컴포넌트로부터 자식 컴포넌트로 데이터를 전달 할 때에는
+      props를 사용하고 자식 컴포넌트가 부모 컴포넌트에게 데이터를 전달할 때에는 이벤트를 emit해서 메세지를 전달
+      합니다.이런 방식으로 간접적인 의존성만 유지한다. 간접적인 의존성만 있다면 부모 컴포넌트는 자식 컴포넌트가
+      누구인지 몰라도 동작하고, 마찬가지로 자식 컴포넌트도 부모 컴포넌트가 누구인지 몰라도 동작한다.
+       이런 방식을 통해 독립적으로 컴포넌트가 존재할 수 있또록 설계 되었습니다
+     -->
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script>
+      var simpleComponent = {
+        //props를 정의 합니다.
+        props: ['message', 'msg'],
+        //props를 데이터 처럼 템플릿 내부에서 사용 할 수 있습니다.
+        template: '<div>{{ message }} {{ msg }}</div>'
+      }
+      new Vue({
+        el: '#app',
+        components: {
+          'simple-component' : simpleComponent
+        }
+      })
+    </script>
+  </body>
+</html>

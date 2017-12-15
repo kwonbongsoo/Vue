@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>동적 props</title>
+  </head>
+  <body>
+    <div id="app">
+      <simple-component :initial-counter="counter"></simple-component>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script>
+      var simpleComponent = {
+        props: ['initialCounter'],
+        template: '<button @click="addCounter">{{ counter }}</button>',
+        data: function() {
+          return {
+            counter: this.initialCounter
+          }
+        },
+        methods: {
+          addCounter: function () {
+            this.counter += 1;
+          }
+        }
+      }
+      new Vue({
+        el: '#app',
+        data : {
+          counter: 0
+        },
+        components: {
+          'simple-component' : simpleComponent
+        }
+      })
+    </script>
+  </body>
+</html>

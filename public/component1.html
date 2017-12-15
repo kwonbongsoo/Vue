@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>component1</title>
+  </head>
+  <body>
+    <div id="app">
+      <date></date>
+      <date></date>
+      <date></date>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script>
+      Vue.component('date', { // date 컴포너느를 글로벌하게 등록한다.
+        template: '<div>{{ now }}</div>',
+        data: function() {
+          return {
+            now : new Date()
+          }
+        }
+      })
+      new Vue({
+        el: '#app'
+      })
+    </script>
+  </body>
+</html>

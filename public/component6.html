@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>component1</title>
+  </head>
+  <body>
+    <div id="app">
+      <todo-component></todo-component>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <!-- 템플릿 부분을 분리하였습니다. -->
+    <!-- <script type="text/x-template" id="todo-component">
+      <div>
+        <h1>2018년 목표</h1>
+        <ul>
+          <li v-for="todo in todos">
+            {{ todo }}
+          </li>
+        </ul>
+      </div>
+    </script> -->
+    <!-- 템플릿 부분을 분리하였습니다. -->
+    <template id="todo-component">
+      <div>
+        <h1>2018년 목표</h1>
+        <ul>
+          <li v-for="todo in todos">
+            {{ todo }}
+          </li>
+        </ul>
+      </div>
+    </template>
+    <!-- 이렇게 두가지 문법으로 템플릿을 분리하여 정의 할 수 있다 -->
+    <script>
+      var todoComponent = {
+        template: '#todo-component', //ID 선택지를 이용
+        data: function () {
+          return {
+            todos: [
+              '열심히 일하기',
+              '효도하기',
+              '연애하기'
+            ]
+          }
+        }
+      }
+      new Vue({
+        el: '#app',
+        components: {
+          'todo-component': todoComponent
+        }
+      })
+    </script>
+  </body>
+</html>
