@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>동적 props</title>
+  </head>
+  <body>
+     <div id="app">
+       <simple-component :name="name" :price="price" :message="message"></simple-component>
+       <!--
+       props를 받을 때 어떤 데이터 타입인지 알수 없습니다. 만약 props의 데이터 타입이 중요하다면 props
+       검증을 통해 props 데이터 ㅏ입을 강제할 수 있습니다. 이기능은 다른 개발자와 협업할 때 유용하다.
+       -->
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script>
+      var simpleComponent = {
+        props: {
+          name: {
+            type: String,
+            default: '구형 스마트폰' // 기본값을 정의 할수 있다.
+          },
+          price: {
+            type: Number,
+            validator: function (value) {
+              // value 값이 500000이상이 아니면 검증 실패입니다.
+              return value >= 500000
+            }
+          },
+          message: {
+            type: [String, Number], // 리스트를 통해 여러 타입을 허용할 수 있습니다.
+            required: true
+            //반드시 props로 전달 해야 합니다. 전달하지 않으면 검증 실패입니다.
+          },
+          object: {
+            type: Object,
+            //타입이 Object인 경우 함수를 통해 반환해야 합니다.
+            default: function () {
+              return { message: '메시지'}
+            }
+          }
+        },
+        template: '<div> {{ name }}, {{ price }}원, {{ message }}</div>'
+      }
+      new Vue({
+        el: '#app',
+        data: {
+          name: '최신형 스마트폰',
+          price: 440000,
+          message: '최신형 스마트폰 싸게 팝니다.'
+        },
+        components: {
+          'simple-component' : simpleComponent
+        }
+      })
+    </script>
+  </body>
+</html>

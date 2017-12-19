@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>컴포넌트의 v-model</title>
+  </head>
+  <body>
+    <div id="app">
+      <email-input v-model="email"></email-input>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script type="text/x-template" id="email-input-template">
+      <div>
+        <label>
+          <input  type="text" :value="value" v-on:input="validate">
+          상태: {{ statusMessage }}
+        </label>
+      </div>
+    </script>
+    <script>
+    // 컴포넌트에 v-model을 이용해 사용자 정의 입력을 만들 수 있다.
+    // 이메일 형식이면 상태: 가능으로 렌더링되며
+    // 이메일 형식이 아니면 상태: 불가능으로 렌더링 된다.
+      Vue.component('email-input', {
+        props: ['value'],
+        template: '#email-input-template',
+        data: function () {
+          return { status : false };
+        },
+        computed: {
+          statusMessage: function() {
+            return this.status ? '가능' : '불가능';
+          }
+        },
+        methods: {
+          validate: function(even) {
+            this.value = event.target.value;
+            if(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i.test(this.value)) {
+              this.status = false;
+            } else {
+              this.status = true;
+            }
+          }
+        }
+      })
+
+      new Vue({
+        el: '#app',
+        data : {
+          email: ''
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>event emit</title>
+  </head>
+  <body>
+    <div id="app">
+      <counter-component v-on:increment="incrementTotal"></counter-component>
+      <counter-component v-on:increment="incrementTotal"></counter-component>
+      <p>Total: {{ total }} </p>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    </script>
+    <script type="text/javascript">
+    //동작원리
+    // 일단 컴포넌트를 vue 에 등록하고,
+    // 컴포넌트 템플릿에서 버튼에 클릭이벤트를 바인드시켜놓는다.
+    // 버튼을 클릭하게 되면 incrementCounter라는 함수를 실행해 couter를 증가시키고
+    // this.$emit()함수를 이용해 파라미터 값으로 컴포넌트에 사용자가 지정한 임의의 이벤트를
+    // 찾아 실행시킨다.
+    // increment="incrementTotal" 이라고 선언되어
+    // 실행하면 뷰 객체의 메소드에서 함수를 찾아 incrementTotal() 함수를 실행시켜
+    // 토탈값을 증가 시키는 원리 이다.
+    //이 예제에서는 하위 컴포넌트가 외부에서 발생 하는 것과 완전히 분리 된다는 점에
+    // 유의해야 합니다. 부모 컴포넌트가 신경 쓸 수 있는 경우를 대비하여
+    // 자체 활동에 대한 정보를 보고 하는 것뿐입니다
+    Vue.component('counter-component', {
+      template: '<button v-on:click="incrementCounter">{{ counter }}</button>',
+      data: function () {
+        return {
+          counter: 0
+        }
+      },
+      methods: {
+        incrementCounter: function () {
+          this.counter += 1
+          this.$emit('increment')
+        }
+      }
+    })
+
+    new Vue({
+      el: '#app',
+      data: {
+        total: 0
+      },
+      methods: {
+        incrementTotal: function () {
+          this.total += 1
+        }
+      }
+    })
+    </script>
+  </body>
+</html>
