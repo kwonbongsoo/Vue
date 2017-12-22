@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>동적 컴포넌트</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id='app'>
+      <div class="container">
+        <ul class="nav nav-tabs">
+          <li @click="currentView = 'home'"><a href="#">HOME</a></li>
+          <li @click="currentView = 'profile'"><a href="#">PROFILE</a></li>
+          <li @click="currentView = 'messages'"><a href="#">MESSAGES</a></li>
+        </ul>
+        <component :is="currentView"></component>
+      </div>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script type="text/x-template" id="home-component-template">
+      <div>
+        This is home!
+      </div>
+    </script>
+    <script type="text/x-template" id="profile-component-template">
+      <div>
+        Name: Kwon Bong-soo<br>
+        Age: 28<br>
+        Weight: 100KG
+      </div>
+    </script>
+    <script type="text/x-template" id="messages-component-template">
+      <div>
+        <ul>
+          <li>First</li>
+          <li>Second</li>
+          <li>Third</li>
+        </ul>
+      </div>
+    </script>
+    <script>
+    new Vue({
+      el: '#app',
+      data: {
+        currentView: 'home'
+      },
+      components: {
+        home: {
+          template: '#home-component-template'
+        },
+        profile: {
+          template: '#profile-component-template'
+        },
+        messages: {
+          template: '#messages-component-template'
+        }
+      }
+    })
+    </script>
+  </body>
+</html>

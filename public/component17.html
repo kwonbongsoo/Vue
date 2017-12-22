@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>부모-자식 관계가 아닌 컴포넌트의 통신</title>
+  </head>
+  <body>
+    <div id="app">
+      <counter :initial-counter="counter"></counter>
+      <checkbox></checkbox>
+    </div>
+    <script src="./node_modules\vue\dist\vue.min.js"></script>
+    <script>
+      Vue.component('counter', {
+        props: ['initialCounter'],
+        template: '<button @click="addCounter">{{ counter }}</button>',
+        data: function() {
+          return { counter: this.initialCounter }
+        },
+        methods: {
+          addCounter: function () {
+            this.counter += 1;
+            if (this.counter >= 5) {
+              bus.$emit('checked', true);
+            }
+          }
+        }
+      });
+
+      Vue.component('checkbox', {
+        template: '<input type="checkbox" :checked="checked" value="Hello, Vue!" disabled>',
+        data: function () {
+          return { checked: false };
+        },
+        mounted: function () {
+          bus.$on('checked', function (value) {
+            console.log(value)
+            this.checked = value;
+          }.bind(this))
+        }
+      })
+
+      var bus = new Vue();
+      new Vue({
+        el: '#app',
+        data: {
+          counter: 0
+        }
+      });
+      // counter 컴포넌트의 버튼이 5 이상 됬을 때 checkbox 컴포넌트에 체크박스가 체크되는
+      // 소스다. 빈 Vue 인스턴스에 $on을 통해 이벤트르 감지하고 $emit을 통해 이벤트를 호출하는 것으로 이벤트
+      // 버스처럼 사용할 수 있다.
+      // 만들고자하는 애플리케이션이 복잡한 경우에는 vuex 라는 상태관리 패턴을 적용한 공식 라이브러리를
+      // 이용하는게 좋다.
+      // 어렵다. 디져도 한번 더 한다.
+    </script>
+  </body>
+</html>
